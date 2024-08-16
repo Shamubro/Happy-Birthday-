@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .door {
+            position: relative;
+            width: 200px;
+            height: 400px;
+            background-color: #8B4513;
+            border-radius: 5px;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        .door .left,
+        .door .right {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            background-color: #8B4513;
+            transition: transform 2s ease;
+            transform-origin: left center;
+        }
+
+        .door .right {
+            left: 50%;
+            transform-origin: right center;
+        }
+
+        .door.open .left {
+            transform: rotateY(-90deg);
+        }
+
+        .door.open .right {
+            transform: rotateY(90deg);
+        }
+
+        .message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: #fff;
+            opacity: 0;
+            transition: opacity 2s ease;
+        }
+
+        .door.open .message {
+            opacity: 1;
+        }
+
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #ff6347;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="door" id="door">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="background"></div>
+        <div class="message">Happy Birthday to you, Mairaj Bhai!</div>
+    </div>
+
+    <script>
+        document.getElementById("door").addEventListener("click", function() {
+            this.classList.toggle("open");
+        });
+    </script>
+</body>
+</html>
